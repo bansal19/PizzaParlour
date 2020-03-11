@@ -1,4 +1,4 @@
-# A2
+# A2: Pizza Parlour API
 
 
 ## How to run

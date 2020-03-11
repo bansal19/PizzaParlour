@@ -9,5 +9,5 @@ Added pylint to vscode
 
 Run unit tests with coverage by running `pytest --cov-report term --cov=. tests/unit_tests.py`
 
-# Roadmap
+## Roadmap
 ![A2_Roadmap](a2_Roadmap.jpeg)

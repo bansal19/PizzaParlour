@@ -11,3 +11,6 @@ Run unit tests with coverage by running `pytest --cov-report term --cov=. tests/
 
 ## Roadmap
 ![A2_Roadmap](a2_Roadmap.jpeg)
+
+## Design
+High cohesion: instead of including the delivery information as seperate variables in the order object, it will be a sepearte order_delivery object that is an element of the order object. This means that each class has a single responsibility. 

@@ -1,6 +1,10 @@
 from enum import Enum
 
+
 class Order:
+	"""
+	An Order class
+	"""
 	total_orders = 0
 
 	def __init__(self):
@@ -61,7 +65,7 @@ class Order:
 		"""
 		return self.order_items
 
-	def addOrderItem(self, MenuItem):
+	def add_order_item(self, MenuItem):
 		"""
 		Adds an item to this order
 
@@ -70,7 +74,12 @@ class Order:
 		"""
 		self.order_items.append(MenuItem)
 
-	def cancelOrder(self):
+	def cancel_order(self):
+		"""
+		Cancel current order
+		:return: void
+		:rtype: void
+		"""
 		self.order_status = OrderStatus.CANCELED
 
 	def __str__(self):
@@ -78,9 +87,11 @@ class Order:
 		Return to later once we know what we want out of this
 		:return:
 		"""
-		return self.price
+		return self.order_items
+
 
 class OrderStatus(Enum):
+	""" Each order has a status"""
 	STARTED = 0
 	PLACED = 1
 	OUT_FOR_DELIVERY = 2
@@ -88,16 +99,3 @@ class OrderStatus(Enum):
 	OUT_FOR_PICKUP = 4
 	PICKED_UP = 5
 	CANCELED = 9
-
-
-
-if __name__ == "__main__":
-	order1 = Order()
-	print(order1.getOrderNumber())
-	order2= Order()
-	print(order2.getOrderNumber())
-	order2 = Order()
-	print(order2.getOrderNumber())
-	order3 = Order()
-	print(order3.getOrderNumber())
-

@@ -27,3 +27,6 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
 ## Criticisms and Limitations of Design Patterns
 
 ## Pair Programming
+1. Creating Classes for each file
+
+2. 

@@ -1,4 +1,7 @@
-class Pizza:
+from Classes.MenuItem import MenuItem
+
+
+class Pizza(MenuItem):
 	"""
 	Pizza Class
 	"""
@@ -9,15 +12,28 @@ class Pizza:
 	# All possible toppings offered. Each topping costs 50 cents
 	all_pizza_toppings = ['onions', 'tomatoes', 'anchovies', 'extra cheese', 'garlic', 'salt', 'ham']
 	
-	def __init__(self, pizza_type, toppings):
+	# Pizza size
+	all_pizza_sizes = {'small': -2.00, 'medium': 0.00, 'large': 2.00, 'family size': 5.00}
+	
+	def __init__(self, pizza_type, toppings, size):
+		
+		# Initialise to empty list
+		self.pizza_toppings = []
 		
 		if pizza_type in self.all_pizza_types:
 			self.pizza_type = pizza_type
-			
-		if all(topping in self.pizza_toppings for topping in toppings):
-			self.pizza_toppings = toppings
+		else:
+			# Default Pizza Type
+			self.pizza_type = 'Margherita'
+
+		for topping in toppings:
+			if topping in self.all_pizza_toppings:
+				self.pizza_toppings.append(topping)
 		
-		self.price = self.all_pizza_types[pizza_type] + (0.5 * len(toppings))
+		if size in self.all_pizza_sizes:
+			self.size = size
+		
+		self.price = self.all_pizza_types[pizza_type] + (0.5 * len(toppings)) + size
 
 	def get_type(self):
 		"""
@@ -85,4 +101,4 @@ class Pizza:
 		:return: price of pizza
 		:rtype: float
 		"""
-		return self.all_pizza_types[self.pizza_type] + (0.5 * len(self.pizza_toppings))
+		return self.all_pizza_types[self.pizza_type] + (0.5 * len(self.pizza_toppings)) + self.size

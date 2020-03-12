@@ -496,6 +496,7 @@
       <option name="ignoredErrors">
         <list>
           <option value="E203" />
+          <option value="E128" />
         </list>
       </option>
     </inspection_tool>

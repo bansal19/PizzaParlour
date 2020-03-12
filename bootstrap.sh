@@ -1,3 +1,1 @@
-pip install flask
-pip install pytest
-pip install pytest-cov
+pip3 install -r requirements.txt

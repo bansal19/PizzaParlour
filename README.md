@@ -17,4 +17,6 @@ High cohesion: instead of including the delivery information as seperate variabl
 
 Factory: There are mutliple types of delivery (uber, foodora, in-house, etc.). Each of these delivery types will be a class that implements the OrderDistribution interface. A factory class will create the OrderDistribution object, filling in the constructor with the proper parameters based off the type (uber: JSON, foodora: CSV, in-house). 
 
+Serialization: For each class we have defined, there is a toString method to serialize the data to JSON. 
+
 Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guides/menu_integration)

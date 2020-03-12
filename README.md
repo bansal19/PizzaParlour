@@ -27,3 +27,10 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
 ## Criticisms and Limitations of Design Patterns
 
 ## Pair Programming
+1. Creating Classes for each file
+    - Roadblocks we struggled with: 
+        1. We didn't know how to define static variables in Python, how to modify static variables in classes
+        2. How to have the static variables in the init functions.
+        3. 
+
+2. 

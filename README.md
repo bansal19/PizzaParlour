@@ -23,12 +23,15 @@ Serialization: For each class we have defined, there is a toString method to ser
 
 Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guides/menu_integration)
 
-### Data Class Diagram
+#### Data Class Diagram
 ![Design Patterns](DesignPatterns.jpg)
 
-## Criticisms and Limitations of Design Patterns
+#### Criticisms and Limitations of Design Patterns
 
-## Pair Programming
+## 2. Write
+> pair program features and document as we go
+
+#### Pair Programming
 1. Creating Order class
     - **Driver**: Ryan 
     - **Navigator**: Shardul
@@ -42,3 +45,6 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
 2. Creating MenuItem class and Children Drink and Pizza
     - **Driver**: Shardul
     - **Navigator**: Ryan 
+
+## 3. Test
+> finalize unit tests and ensure code coverage and cleanliness

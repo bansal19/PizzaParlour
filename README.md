@@ -21,7 +21,7 @@ Serialization: For each class we have defined, there is a toString method to ser
 
 Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guides/menu_integration)
 
-### Informal UML Diagram
+### Data Class Diagram
 ![Design Patterns](DesignPatterns.jpg)
 
 ## Criticisms and Limitations of Design Patterns

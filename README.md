@@ -31,6 +31,4 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
     - Roadblocks we struggled with: 
         1. We didn't know how to define static variables in Python, how to modify static variables in classes
         2. How to have the static variables in the init functions.
-        3. 
-
-2. 
+        3. Should the pizza type be an ENUM? Unfortunately we couldn't have that because the Pizza Parlour should be able to add pizza types. The same can be said about the toppings, so we created a dictionary and list for each of those respectively. The dictionary's key is the pizza type and the value is the price of that particular pizza type. 

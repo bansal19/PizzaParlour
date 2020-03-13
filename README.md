@@ -49,6 +49,13 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
     - We externalised our data so that it can be changed globally. All the information is stored in Menu.json now regarding the goods provided by Pizza Parlour.
     - We took advantage of inheritance and the child-parent relationship while creating our classes in this session of pair-programming!
 
+
+**TODO: implement pizza constructor with a builder class**
+    
+3. Switching to Parallel Programming
+    - **Ryan**: OrderDistribution interface and foodora, ubereats, and inhouse classes
+    - **Shardul**: Testing the classes he has written for MenuItems
+
 ## 3. Test
 > finalize unit tests and ensure code coverage and cleanliness
 

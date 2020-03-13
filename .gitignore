@@ -1,4 +1,5 @@
 __py_cache__/*
 *.pyc
 .idea
+.pytest_cache
 .coverage

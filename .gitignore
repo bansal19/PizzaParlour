@@ -1,0 +1,6 @@
+__py_cache__/
+*.pyc
+.idea
+.pytest_cache
+.coverage
+tests/__py_cache__/

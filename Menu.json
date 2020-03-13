@@ -1,0 +1,26 @@
+{
+    "all_pizza_toppings": ['onions', 'tomatoes', 'anchovies', 'extra cheese', 'garlic', 'salt', 'ham'],
+    "all_pizza_types": {
+        'Pepperoni': 8.99,
+        'Margherita': 7.50,
+        'Vegetarian': 7.59,
+        'Neapolitan': 11.99
+    },
+    "all_drinks": {
+        'Coke': 1.59,
+        'Diet Coke': 1.69,
+        'Coke Zero': 1.69,
+        'Pepsi': 1.69,
+        'Diet Pepsi': 1.29,
+	    'Dr Pepper': 1.29,
+        'Water': 0.99,
+        'Juice': 1.99,
+    },
+    "all_pizza_sizes": {
+        'small': -2.00,
+        'medium': 0.00,
+        'large': 2.00,
+        'family size': 5.00,
+    }
+
+}

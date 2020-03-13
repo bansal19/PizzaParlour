@@ -10,7 +10,7 @@ Added pylint to vscode
 Run unit tests with coverage by running `pytest --cov-report term --cov=. tests/unit_tests.py`
 
 ## Roadmap
-![A2_Roadmap](a2_Roadmap.jpeg)
+![A2_Roadmap](a2_roadmap.jpg)
 
 ## 1. Design
 > _choose design patterns to use and define data objects_
@@ -24,7 +24,7 @@ Serialization: For each class we have defined, there is a toString method to ser
 Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guides/menu_integration)
 
 #### Data Class Diagram
-![Design Patterns](DesignPatterns.jpg)
+![Design Patterns](a2_design_patterns.jpg)
 
 #### Criticisms and Limitations of Design Patterns
 

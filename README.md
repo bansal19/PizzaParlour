@@ -48,6 +48,7 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
     - Should the pizza type be an ENUM? Unfortunately we couldn't have that because the Pizza Parlour should be able to add pizza types. The same can be said about the toppings, so we created a dictionary and list for each of those respectively. The dictionary's key is the pizza type and the value is the price of that particular pizza type. 
     - We externalised our data so that it can be changed globally. All the information is stored in Menu.json now regarding the goods provided by Pizza Parlour.
     - We took advantage of inheritance and the child-parent relationship while creating our classes in this session of pair-programming!
+    ** TODO: implement pizza constructor with a builder class **
 
 ## 3. Test
 > finalize unit tests and ensure code coverage and cleanliness

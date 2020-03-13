@@ -24,7 +24,7 @@ Serialization: For each class we have defined, there is a toString method to ser
 Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guides/menu_integration)
 
 #### Data Class Diagram
-![Design Patterns](DesignPatterns.jpg)
+![Design Patterns](a2_design_patterns.jpg)
 
 #### Criticisms and Limitations of Design Patterns
 

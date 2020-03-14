@@ -1,40 +1,51 @@
-from Classes.MenuItem import MenuItem
+from MenuItem import MenuItem
+import json
 
 
 class Pizza(MenuItem):
 	"""
 	Pizza Class
 	"""
+	try:
+		with open('../Menu.json', "r") as f:
+			data = json.load(f)
+			f.close()
+	except IOError:
+		print("Could not load JSON file")
 	
 	# The prices of each pizza
-	all_pizza_types = {'Pepperoni': 8.99, 'Margherita': 7.50, 'Vegetarian': 7.59, 'Neapolitan': 11.99}
+	all_pizza_types = data["all_pizza_types"]
 	
 	# All possible toppings offered. Each topping costs 50 cents
-	all_pizza_toppings = ['onions', 'tomatoes', 'anchovies', 'extra cheese', 'garlic', 'salt', 'ham']
-	TOPPINGS_PRICE = 0.50
-	# Pizza size
-	all_pizza_sizes = {'small': -2.00, 'medium': 0.00, 'large': 2.00, 'family size': 5.00}
+	all_pizza_toppings = data["all_pizza_toppings"]
 	
-	def __init__(self, pizza_type, toppings, size):
+	# Pizza size
+	all_pizza_sizes = data["all_pizza_sizes"]
+	
+	def __init__(self, pizza_type, size, toppings=None):
 		
 		# Initialise to empty list
-		self.pizza_toppings = []
+		if toppings is None:
+			toppings = {}
+		self.pizza_toppings = {}
+		self.size = "medium"
 		
 		if pizza_type in self.all_pizza_types:
 			self.pizza_type = pizza_type
 		else:
 			# Default Pizza Type
 			self.pizza_type = 'Margherita'
-
+		
 		for topping in toppings:
 			if topping in self.all_pizza_toppings:
-				self.pizza_toppings.append(topping)
+				self.pizza_toppings[topping] = self.all_pizza_toppings[topping]
 		
 		if size in self.all_pizza_sizes:
 			self.size = size
 		
-		self.price = self.all_pizza_types[pizza_type] + (self.TOPPINGS_PRICE * len(toppings)) + size
-
+		self.price = float(self.all_pizza_types[self.pizza_type]) + sum(self.pizza_toppings.values()) + \
+		             float(self.all_pizza_sizes[self.size])
+	
 	def get_type(self):
 		"""
 		Return the current pizza type
@@ -43,7 +54,7 @@ class Pizza(MenuItem):
 		:rtype: string
 		"""
 		return self.pizza_type
-
+	
 	def set_type(self, new_type):
 		"""
 		Upon modifying the order, a new pizza type can be set
@@ -55,7 +66,7 @@ class Pizza(MenuItem):
 		"""
 		if new_type in self.all_pizza_types:
 			self.pizza_type = new_type
-
+	
 	def get_toppings(self):
 		"""
 		Get all the pizza toppings
@@ -101,33 +112,10 @@ class Pizza(MenuItem):
 		:return: price of pizza
 		:rtype: float
 		"""
-		return self.all_pizza_types[self.pizza_type] + (self.TOPPINGS_PRICE * len(self.pizza_toppings)) + self.size
-	
-	def create_pizza_type(self, new_type, price):
-		"""
-		Given a new_type and a price, create a new Pizza type.
-		:param new_type: New type of pizza to add
-		:type new_type: string
-		:param price: price of the new type
-		:type price: int
-		:return: void
-		:rtype: void
-		"""
-		self.all_pizza_types[new_type] = price
-	
-	def remove_pizza_type(self, remove_type):
-		"""
-		Given a particular type of pizza, remove it to show that the Pizza Parlour is no longer serving this type of pizza.
-		:param remove_type: remove this type of pizza
-		:type remove_type: string
-		:return: void
-		:rtype: void
-		"""
-		if self.all_pizza_types.pop(remove_type, None) is None:
-			print("The type specified, {}, does not exist in all pizza types!".format(remove_type))
-	
-	
-	
-""" Add the ability to add pizza types, remove pizza types, add possible pizza toppings, remove all possible pizza toppings
-change price of certain items
-"""
+		return float(self.all_pizza_types[self.pizza_type]) + sum(self.pizza_toppings.values()) + \
+		       float(self.all_pizza_sizes[self.size])
+
+
+if __name__ == "__main__":
+	newZa = Pizza("Pepperoni", "small")
+	print(newZa.get_type())

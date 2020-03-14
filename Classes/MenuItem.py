@@ -50,4 +50,3 @@ class MenuItem(Menu):
 		:rtype: void
 		"""
 		self.name = new_name
-	

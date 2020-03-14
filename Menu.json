@@ -1,33 +1,34 @@
 {
-	"all_pizza_types": {
-		"Pepperoni": 8.99,
-		"Margherita": 7.50,
-		"Vegetarian": 7.59,
-		"Neapolitan": 11.99
-	},
-	"all_drinks": {
-		"Coke": 1.59,
-		"Diet Coke": 1.69,
-		"Coke Zero": 1.69,
-		"Pepsi": 1.69,
-		"Diet Pepsi": 1.29,
-		"Dr Pepper": 1.29,
-		"Water": 0.99,
-		"Juice": 1.99
-	},
-	"all_pizza_sizes": {
-		"small": -2.00,
-		"medium": 0.00,
-		"large": 2.00,
-		"family size": 5.00
-	},
-	"all_pizza_toppings": {
-		"onions": 0.10,
-		"tomatoes": 0.10,
-		"anchovies": 0.10,
-		"extra cheese": 0.50,
-		"garlic": 0.20,
-		"salt": 0.00,
-		"ham": 0.50
-	}
+    "all_pizza_types": {
+        "Pepperoni": 8.99,
+        "Margherita": 7.5,
+        "Vegetarian": 7.59,
+        "Neapolitan": 11.99
+    },
+    "all_drinks": {
+        "Coke": 1.59,
+        "Diet Coke": 1.69,
+        "Coke Zero": 1.69,
+        "Pepsi": 1.69,
+        "Diet Pepsi": 1.29,
+        "Dr Pepper": 1.29,
+        "Water": 0.99,
+        "Juice": 1.99,
+        "Diet Yeet Shalom": 0.69
+    },
+    "all_pizza_sizes": {
+        "small": -2.0,
+        "medium": 0.0,
+        "large": 2.0,
+        "family size": 5.0
+    },
+    "all_pizza_toppings": {
+        "onions": 0.1,
+        "tomatoes": 0.1,
+        "anchovies": 0.1,
+        "extra cheese": 0.5,
+        "garlic": 0.2,
+        "salt": 0.0,
+        "ham": 0.5
+    }
 }

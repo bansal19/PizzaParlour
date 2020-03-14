@@ -15,7 +15,7 @@ class Drink(MenuItem):
 		
 		if chosen_drink in self.all_possible_drinks:
 			self.drink = chosen_drink
-
+		
 	def get_drink(self):
 		"""
 		Gets the current drink
@@ -25,40 +25,26 @@ class Drink(MenuItem):
 		"""
 		return self.drink
 	
-	def add_drink_to_menu(self, drink_name, drink_price):
+	def set_drink(self, new_drink):
 		"""
-		Add a Drink to our JSON file
-
-		:param drink_name: New drink to add
-		:type drink_name: string
-		:param drink_price: price of the new drink
-		:type drink_price: float
+		Set a new drink
+		
+		:param new_drink: the new drink to set
+		:type new_drink: string
 		:return: void
 		:rtype: void
 		"""
-		try:
-			if drink_name not in self.all_possible_drinks:
-				with open('../Menu.json', "r+") as f:
-					data = json.load(f)
-					data['all_drinks'].update({drink_name: drink_price})
-					f.seek(0)
-					json.dump(data, f, indent=4)
-					f.close()
-		except IOError:
-			print("Could not add drink {} to Menu!".format(drink_name))
+		if new_drink in self.all_possible_drinks:
+			self.drink = new_drink
 	
-	def remove_drink_from_menu(self, drink):
+	def get_price(self):
 		"""
-		Given the drink (str), remove this from the Pizza Parlour menu (JSON file)
-
-		:param drink: drink to be removed
-		:type drink: string
-		:return: void
-		:rtype: void
+		Get the price of the current drink
+		:return: the price of the drink
+		:rtype: float
 		"""
-		pass
+		return self.all_possible_drinks[self.get_drink()]
 
 
 if __name__ == '__main__':
-	this_drink = Drink("Coke")
-	print(this_drink.add_drink("Diet Yeet Shalom", 0.69))
+	print("Hey there.")

@@ -45,7 +45,7 @@ class Pizza(MenuItem):
 		
 		self.price = float(self.all_pizza_types[self.pizza_type]) + sum(self.pizza_toppings.values()) + \
 		             float(self.all_pizza_sizes[self.size])
-	
+
 	def get_type(self):
 		"""
 		Return the current pizza type

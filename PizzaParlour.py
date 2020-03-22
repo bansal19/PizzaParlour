@@ -6,5 +6,6 @@ app = Flask("Assignment 2")
 def welcome_pizza():
     return 'Welcome to Pizza Planet!'
 
+
 if __name__ == "__main__":
     app.run()

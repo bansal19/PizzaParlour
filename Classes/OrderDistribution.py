@@ -22,6 +22,7 @@ class OrderDistribution(ABC):
 	def is_delivered(self):
 		pass
 
+
 	def __str__(self):
 		"""
 		Return to later once we know what we want out of this

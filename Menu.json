@@ -13,8 +13,7 @@
         "Diet Pepsi": 1.29,
         "Dr Pepper": 1.29,
         "Water": 0.99,
-        "Juice": 1.99,
-        "Diet Yeet Shalom": 0.69
+        "Juice": 1.99
     },
     "all_pizza_sizes": {
         "small": -2.0,

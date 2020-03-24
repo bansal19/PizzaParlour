@@ -45,6 +45,7 @@ class UberEatsDelivery(OrderDistribution):
             with open(self.jsonFilem, "r") as f:
                 data = json.load(f)
                 self.address = data["address"]
+                return self.address
 
         except IOError:
             print("Could not open UberEats JSON file")

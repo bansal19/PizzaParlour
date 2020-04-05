@@ -23,11 +23,13 @@ class Pizza(MenuItem):
 	all_pizza_sizes = data["all_pizza_sizes"]
 	
 	def __init__(self, pizza_type, size, toppings=None):
-		
+
+		self.price = 0
+
 		# Initialise to empty list
 		if toppings is None:
-			toppings = {}
-		self.pizza_toppings = {}
+			toppings = []
+		self.pizza_toppings = []
 		self.size = "medium"
 		
 		if pizza_type in self.all_pizza_types:
@@ -38,13 +40,15 @@ class Pizza(MenuItem):
 		
 		for topping in toppings:
 			if topping in self.all_pizza_toppings:
-				self.pizza_toppings[topping] = self.all_pizza_toppings[topping]
-		
+				self.pizza_toppings.append(topping)
+				self.price += float(self.all_pizza_toppings[topping])
+			else:
+				print("Sorry, topping " + topping + " does not exist in the Menu")
+
 		if size in self.all_pizza_sizes:
 			self.size = size
 		
-		self.price = float(self.all_pizza_types[self.pizza_type]) + sum(self.pizza_toppings.values()) + \
-		             float(self.all_pizza_sizes[self.size])
+		self.price += float(self.all_pizza_types[self.pizza_type]) + float(self.all_pizza_sizes[self.size])
 
 	def get_type(self):
 		"""
@@ -112,5 +116,13 @@ class Pizza(MenuItem):
 		:return: price of pizza
 		:rtype: float
 		"""
-		return float(self.all_pizza_types[self.pizza_type]) + sum(self.pizza_toppings.values()) + \
-		       float(self.all_pizza_sizes[self.size])
+		self.price = float(self.all_pizza_types[self.pizza_type]) + float(self.all_pizza_sizes[self.size])
+
+		for topping in self.get_toppings():
+			self.price += float(self.all_pizza_toppings[topping])
+
+		return self.price
+
+	def __str__(self):
+		"""ToString function of the Pizza Class"""
+		return {self.pizza_type: {"size": self.size, "toppings": self.get_toppings(), "price": self.get_price()}}

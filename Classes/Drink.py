@@ -9,7 +9,7 @@ class Drink(MenuItem):
 		data = json.load(f)
 	
 	all_possible_drinks = data["all_drinks"]
-	
+
 	def __init__(self, chosen_drink):
 		self.drink = ""
 		
@@ -44,3 +44,7 @@ class Drink(MenuItem):
 		:rtype: float
 		"""
 		return self.all_possible_drinks[self.get_drink()]
+
+	def __str__(self):
+		""" ToString function for a drink"""
+		return {self.drink: self.get_price()}

@@ -82,12 +82,28 @@ class Order:
 		"""
 		self.order_status = OrderStatus.CANCELED
 
+	def set_order_distribution(self, distribution):
+		"""
+		Set the order distribution from a list of "pickup", "in-house-delivery", "uber-delivery",
+		"foodora-delivery"
+
+		"""
+		if distribution in ["pickup", "in-house-delivery", 'uber-delivery', "foodora-delivery"]:
+			self.distribution = distribution
+		else:
+			self.distribution = "pickup"
+
 	def __str__(self):
 		"""
 		Return to later once we know what we want out of this
 		:return:
 		"""
-		return self.order_items
+		order_details = {"orderID": self.order_number, "order status": str(self.order_status), "order items": [], "order distribution": self.distribution, "order price": self.get_price()}
+
+		for item in self.get_order_items():
+			order_details["order items"].append(str(item))
+
+		return str(order_details)
 
 
 class OrderStatus(Enum):
@@ -99,3 +115,4 @@ class OrderStatus(Enum):
 	OUT_FOR_PICKUP = 4
 	PICKED_UP = 5
 	CANCELED = 9
+

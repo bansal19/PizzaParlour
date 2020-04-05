@@ -10,7 +10,7 @@ class InHouseDelivery(OrderDistribution):
         self.delivered = False
         self.orderNum = orderNum
 
-    def set_adrress(self, new_address):
+    def set_address(self, new_address):
         """
         param: new_address - The new address that this order needs to be sent to
         return: void

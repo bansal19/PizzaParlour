@@ -12,6 +12,8 @@ app = Flask("Assignment 2")
 
 menu = Menu(menu_path)
 
+# Store all the orders
+all_orders = []
 
 """ Menu APIs: """
 @app.route('/pizza')
@@ -56,22 +58,36 @@ def new_order():
                 order_pizza = Pizza(pizza_name, pizza_size, pizza_toppings)
                 new_customer_order.add_order_item(order_pizza)
 
+        all_orders.append(new_customer_order)
         return "Order was filled in successfully. Your orderID is: " + str(new_customer_order.order_number)
 
     else:
         return "Sorry, have to use POST request to fill in pizza order"
 
 
-@app.route("/get_order_info/<orderID>", methods=['GET'])
-def get_order_info(orderID):
+@app.route("/get_order_info/<order_id>", methods=['GET'])
+def get_order_info(order_id):
 
     if request.method == 'GET':
-        
+        for order in all_orders:
+            if order.order_number == int(order_id):
+                return str(order)
 
-@app.route("/order_distribution/<orderID>/<pickOrDeliver>")
-def order_distribution(orderID, pickOrDeliver):
-    """ Get an order in for either pickup or delivery"""
-    pass
+        return "Sorry, the order with the order number " + order_id + " was not found."
+
+
+@app.route("/order_distribution/<order_id>/<pick_or_deliver>", methods=['PATCH'])
+def set_order_distribution(order_id, pick_or_deliver):
+    """ Provide information for if the order is for either pickup or delivery
+    possible values for pick_or_deliver: "pickup", "in-house-delivery", 'uber-delivery', "foodora-delivery" """
+
+    if request.method == 'PATCH':
+        for order in all_orders:
+            if order.order_number == int(order_id):
+                order.set_order_distribution(pick_or_deliver)
+                return str(order)
+
+        return "Sorry, the order with the order number " + order_id + " was not found."
 
 
 @app.route("/add_to_order/<orderID>/")

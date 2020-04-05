@@ -9,10 +9,10 @@
         "Coke": 1.59,
         "Diet Coke": 1.69,
         "Coke Zero": 1.69,
-        "Pepsi": 1.69,
         "Diet Pepsi": 1.29,
         "Dr Pepper": 1.29,
         "Water": 0.99,
+        "Pepsi": 1.39,
         "Juice": 1.99
     },
     "all_pizza_sizes": {

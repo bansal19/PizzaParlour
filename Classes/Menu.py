@@ -1,28 +1,12 @@
 import json
+import os
 
 
 class Menu:
 	""" Full menu of the Pizza Parlour"""
-	try:
-		with open('../Menu.json', "r") as f:
-			data = json.load(f)
-			f.close()
-	except IOError:
-		print("Could not load JSON file")
-	
-	# The prices of each pizza
-	all_pizza_types = data["all_pizza_types"]
-	
-	# All possible toppings offered. Each topping costs 50 cents
-	all_pizza_toppings = data["all_pizza_toppings"]
-	
-	# Pizza size
-	all_pizza_sizes = data["all_pizza_sizes"]
-	
-	# All pizza drinks in the Menu
-	all_possible_drinks = data["all_drinks"]
-	
+
 	__instance = None
+
 	@staticmethod
 	def get_instance():
 		""" Static access method. """
@@ -30,8 +14,30 @@ class Menu:
 			Menu()
 		return Menu.__instance
 	
-	def __init__(self):
+	def __init__(self, json_path):
 		""" Virtually private constructor. """
+		self.json_path = json_path
+		data = None
+		try:
+			print(os.getcwd())
+			with open(self.json_path, "r") as f:
+				data = json.load(f)
+				f.close()
+		except IOError:
+			print("Could not load JSON file")
+
+		# The prices of each pizza
+		self.all_pizza_types = data["all_pizza_types"]
+
+		# All possible toppings offered. Each topping costs 50 cents
+		self.all_pizza_toppings = data["all_pizza_toppings"]
+
+		# Pizza size
+		self.all_pizza_sizes = data["all_pizza_sizes"]
+
+		# All pizza drinks in the Menu
+		self.all_possible_drinks = data["all_drinks"]
+
 		if Menu.__instance is not None:
 			raise Exception("This class is a singleton!")
 		else:
@@ -45,7 +51,7 @@ class Menu:
 		:rtype:
 		"""
 		try:
-			with open('../Menu.json', "r") as f:
+			with open(self.json_path, "r") as f:
 				data = json.load(f)
 				return json.dumps(data, indent=4)
 		except IOError:
@@ -59,7 +65,16 @@ class Menu:
 		:return: the price of the MenuItem
 		:rtype: int
 		"""
-		pass
+		try:
+			with open(self.json_path, "r") as f:
+				data = json.load(f)
+				for categories in data:
+					for item in data[categories]:
+						if item == name:
+							return data[categories][item]
+				return "Menu item not found in menu!"
+		except IOError:
+			return "Could not get the menu! Had IOError opening and reading the Menu.json file"
 	
 	"""
 	The below functions are for modifying the Menu json file.
@@ -77,7 +92,7 @@ class Menu:
 		"""
 		try:
 			if new_type not in self.all_pizza_types:
-				with open('../Menu.json', "r+") as f:
+				with open(self.json_path, "r+") as f:
 					data = json.load(f)
 					data["all_pizza_types"].update({new_type: price})
 					f.seek(0)
@@ -97,7 +112,7 @@ class Menu:
 		"""
 		try:
 			if self.all_pizza_types.pop(remove_type, None) is not None:
-				with open('../Menu.json', "r+") as f:
+				with open(self.json_path, "r+") as f:
 					data = json.load(f)
 					data["all_pizza_types"] = self.all_pizza_types
 					f.seek(0)
@@ -120,7 +135,7 @@ class Menu:
 		"""
 		try:
 			if new_topping not in self.all_pizza_toppings:
-				with open('../Menu.json', "r+") as f:
+				with open(self.json_path, "r+") as f:
 					data = json.load(f)
 					data["all_pizza_toppings"].update({new_topping: new_topping_price})
 					f.seek(0)
@@ -140,7 +155,7 @@ class Menu:
 		"""
 		try:
 			if self.all_pizza_toppings.pop(remove_topping, None) is not None:
-				with open('../Menu.json', "r+") as f:
+				with open(self.json_path, "r+") as f:
 					data = json.load(f)
 					data["all_pizza_toppings"] = self.all_pizza_toppings
 					f.seek(0)
@@ -163,7 +178,7 @@ class Menu:
 		"""
 		try:
 			if drink_name not in self.all_possible_drinks:
-				with open('../Menu.json', "r+") as f:
+				with open(self.json_path, "r+") as f:
 					data = json.load(f)
 					data['all_drinks'].update({drink_name: drink_price})
 					f.seek(0)
@@ -172,7 +187,7 @@ class Menu:
 		except IOError:
 			print("Could not add drink {} to Menu!".format(drink_name))
 	
-	def remove_drink_from_menu(self, drink):
+	def remove_drink_from_menu(self, remove_drink):
 		"""
 		Given the drink (str), remove this from the Pizza Parlour menu (JSON file)
 
@@ -181,11 +196,14 @@ class Menu:
 		:return: void
 		:rtype: void
 		"""
-		pass
-
-
-if __name__ == "__main__":
-	menu = Menu()
-	print(menu.get_menu())
-	
-	print(menu.add_drink_to_menu("Diet Yeet Shalom", 0.69))
+		try:
+			if self.all_possible_drinks.pop(remove_drink, None) is not None:
+				with open(self.json_path, "r+") as f:
+					data = json.load(f)
+					data["all_drinks"] = self.all_possible_drinks
+					f.seek(0)
+					json.dump(data, f, indent=4)
+					f.truncate()  # Removes the remaining part of the JSON
+					f.close()
+		except IOError:
+			print("Could not remove the pizza type: {}".format(remove_drink))

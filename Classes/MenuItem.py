@@ -1,4 +1,4 @@
-from Menu import Menu
+from Classes.Menu import Menu
 
 
 class MenuItem(Menu):
@@ -50,4 +50,4 @@ class MenuItem(Menu):
 		:rtype: void
 		"""
 		self.name = new_name
-	
+

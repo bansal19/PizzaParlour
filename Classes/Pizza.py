@@ -1,4 +1,4 @@
-from MenuItem import MenuItem
+from Classes.MenuItem import MenuItem
 import json
 
 
@@ -7,7 +7,7 @@ class Pizza(MenuItem):
 	Pizza Class
 	"""
 	try:
-		with open('../Menu.json', "r") as f:
+		with open('Classes/Menu.json', "r") as f:
 			data = json.load(f)
 			f.close()
 	except IOError:
@@ -16,7 +16,7 @@ class Pizza(MenuItem):
 	# The prices of each pizza
 	all_pizza_types = data["all_pizza_types"]
 	
-	# All possible toppings offered. Each topping costs 50 cents
+	# All possible toppings offered.
 	all_pizza_toppings = data["all_pizza_toppings"]
 	
 	# Pizza size
@@ -114,8 +114,3 @@ class Pizza(MenuItem):
 		"""
 		return float(self.all_pizza_types[self.pizza_type]) + sum(self.pizza_toppings.values()) + \
 		       float(self.all_pizza_sizes[self.size])
-
-
-if __name__ == "__main__":
-	newZa = Pizza("Pepperoni", "small")
-	print(newZa.get_type())

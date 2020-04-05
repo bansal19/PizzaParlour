@@ -5,9 +5,10 @@ class InHouseDelivery(OrderDistribution):
     """
     Class represents the InHouseDelivery system of the Pizza Parlour.
     """
-    def __init__(self, delivery_address):
+    def __init__(self, delivery_address, orderNum):
         self.delivery_address = delivery_address
         self.delivered = False
+        self.orderNum = orderNum
 
     def set_adrress(self, new_address):
         """

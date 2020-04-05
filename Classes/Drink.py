@@ -1,11 +1,11 @@
-from MenuItem import MenuItem
+from Classes.MenuItem import MenuItem
 import json
 
 
 class Drink(MenuItem):
 	""" A drink for the Pizza Parlour
 	"""
-	with open('../Menu.json', "r") as f:
+	with open('Classes/Menu.json', "r") as f:
 		data = json.load(f)
 	
 	all_possible_drinks = data["all_drinks"]
@@ -44,7 +44,3 @@ class Drink(MenuItem):
 		:rtype: float
 		"""
 		return self.all_possible_drinks[self.get_drink()]
-
-
-if __name__ == '__main__':
-	print("Hey there.")

@@ -89,5 +89,6 @@ We also checked to see which rules are inforced in Settings/Preferences -> Edito
 ```
 This inspection highlights using the same value as dictionary key twice.
 ```
-We enabled these checks and ensured that our code passed all of them. We also added [Pylint to Pycharm](https://plugins.jetbrains.com/plugin/11084-pylint) and [ran those checks](https://www.jetbrains.com/help/pycharm/configuring-third-party-tools.html) as well. To fix a majority of the issues automatically, we used the [yapf](https://github.com/google/yapf) program to modify the files in place. 
+We enabled these checks and ensured that our code passed all of them. We also added [Pylint to Pycharm](https://plugins.jetbrains.com/plugin/11084-pylint) and [ran those checks](https://www.jetbrains.com/help/pycharm/configuring-third-party-tools.html) as well. To fix a majority of the issues automatically, we used the [yapf](https://github.com/google/yapf) program to modify the files in place. After installing the [yapf plugin](https://plugins.jetbrains.com/plugin/10960-yapf) in PyCharm, we ran 
+`yapf -i -vv -recursive classes tests PizzaParlour.py`. 
 

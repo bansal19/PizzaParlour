@@ -4,3 +4,4 @@ __py_cache__/
 .pytest_cache
 .coverage
 tests/__py_cache__/
+.vscode/settings.json

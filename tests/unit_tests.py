@@ -1,5 +1,6 @@
 from PizzaParlour import app
 
+
 def test_pizza():
     response = app.test_client().get('/pizza')
 

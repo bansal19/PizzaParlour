@@ -66,6 +66,11 @@ The drawback of pair programming was that it felt slower than if we were to prog
 ## 3. Test
 > finalize unit tests and ensure code coverage and cleanliness
 
+**Code Coverage**
+
+
+**Code Cleanliness**
+
 We used PyCharm as the IDE to code this project. To Ensure code cleanliness, we used the default Code Style setting for Python and ran the "[Code Cleanup](https://www.jetbrains.com/help/pycharm/reformat-file-dialog.html)" checker on [all the files](https://www.jetbrains.com/help/pycharm/specify-code-cleanup-scope-dialog.html) in the project. From the documentation: 
 
 ```
@@ -84,5 +89,5 @@ We also checked to see which rules are inforced in Settings/Preferences -> Edito
 ```
 This inspection highlights using the same value as dictionary key twice.
 ```
-We enabled these checks and ensured that our code passed all of them. 
+We enabled these checks and ensured that our code passed all of them. We also added [Pylint to Pycharm](https://plugins.jetbrains.com/plugin/11084-pylint) and [ran those checks](https://www.jetbrains.com/help/pycharm/configuring-third-party-tools.html) as well. 
 

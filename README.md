@@ -19,8 +19,6 @@ Factory: There are mutliple types of delivery (uber, foodora, in-house, etc.). E
 
 Serialization: For each class we have defined, there is a toString method to serialize the data to JSON. 
 
-Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guides/menu_integration)
-
 #### Data Class Diagram
 ![Design Patterns](a2_design_patterns.jpg)
 

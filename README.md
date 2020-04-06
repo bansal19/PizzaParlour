@@ -13,7 +13,7 @@ Run unit tests with coverage by running `pytest --cov-report term --cov=. tests/
 ## 1. Design
 > _choose design patterns to use and define data objects_
 
-Object Oriented (Gives High cohesion): instead of including the delivery information as seperate variables in the order object, it will be a sepearte order_delivery object that is an element of the order object. This means that each class has a single responsibility. 
+We chose an overall object oriented design. This way we could achieve high cohesion and low coupling. **TODO SHARDUL ADD STUFF HERE**(Gives High cohesion): instead of including the delivery information as seperate variables in the order object, it will be a sepearte order_delivery object that is an element of the order object. This means that each class has a single responsibility. 
 
 Factory: There are mutliple types of delivery (uber, foodora, in-house, etc.). Each of these delivery types will be a class that implements the OrderDistribution interface. A factory class will create the OrderDistribution object, filling in the constructor with the proper parameters based off the type (uber: JSON, foodora: CSV, in-house). 
 

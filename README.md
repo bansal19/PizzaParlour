@@ -67,8 +67,3 @@ The drawback of pair programming was that it felt slower than if we were to prog
 
 ## 3. Test
 > finalize unit tests and ensure code coverage and cleanliness
-
-## Pair Programming
-1. Creating Classes for each file
-
-2. 

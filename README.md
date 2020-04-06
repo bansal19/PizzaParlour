@@ -48,13 +48,22 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
     - Should the pizza type be an ENUM? Unfortunately we couldn't have that because the Pizza Parlour should be able to add pizza types. The same can be said about the toppings, so we created a dictionary and list for each of those respectively. The dictionary's key is the pizza type and the value is the price of that particular pizza type. 
     - We externalised our data so that it can be changed globally. All the information is stored in Menu.json now regarding the goods provided by Pizza Parlour.
     - We took advantage of inheritance and the child-parent relationship while creating our classes in this session of pair-programming!
-
-
-**TODO: implement pizza constructor with a builder class**
     
-3. Switching to Parallel Programming
+3. Switched to Parallel Programming
     - **Ryan**: OrderDistribution interface and foodora, ubereats, and inhouse classes
     - **Shardul**: Testing the classes he has written for MenuItems
+    
+4. Switched to Back to Pair Programming
+    - **Driver**: Shardul
+    - **Navigator**: Ryan
+    
+    
+**Pair Programming Reflection** 
+
+We found pair programming to be very productive, especially since the instructions were intentionally vague for the assignment. When pair programming, we could easily discuss our design choices and make changes. This was really important because we could not anticipate every single piece of code that would be needed in the final design. When we encountered a problem that we did not anticipate in the design or tackled errors that required debugging, it was great having two heads to put together to solve the issue. 
+
+The drawback of pair programming was that it felt slower than if we were to program on our own. The features were better designed and implemented, but it was a different pace than we were used to. Instead of "hacking" the entire project together, this was a much more structured process, but took longer than we anticipated. 
+
 
 ## 3. Test
 > finalize unit tests and ensure code coverage and cleanliness

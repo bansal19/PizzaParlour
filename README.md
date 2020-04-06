@@ -11,7 +11,7 @@ Run unit tests with coverage by running `pytest --cov-report term --cov=. tests/
 ![A2_Roadmap](a2_roadmap.jpg)
 
 ## 1. Design
-> _choose design patterns to use and define data objects_
+> _Make informed decisions about design patterns and define data objects_
 
 We chose an overall object oriented design. This way we could achieve high cohesion and low coupling. **TODO SHARDUL ADD STUFF HERE**(Gives High cohesion): instead of including the delivery information as seperate variables in the order object, it will be a sepearte order_delivery object that is an element of the order object. This means that each class has a single responsibility. 
 
@@ -27,7 +27,7 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
 #### Criticisms and Limitations of Design Patterns
 
 ## 2. Write
-> pair program features and document as we go
+> _Pair program features and document as we go_
 
 #### Pair Programming
 1. Creating Order class
@@ -64,7 +64,7 @@ The drawback of pair programming was that it felt slower than if we were to prog
 
 
 ## 3. Test
-> finalize unit tests and ensure code coverage and cleanliness
+> _Finalize unit tests and ensure code coverage and cleanliness_
 
 **Code Coverage**
 

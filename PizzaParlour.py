@@ -184,6 +184,7 @@ def deliver_order(order_id):
                     order.order_out_for_delivery()
                     return json.dumps(order.to_dict())
 
+@app.route("/")
 
 if __name__ == "__main__":
     app.run()

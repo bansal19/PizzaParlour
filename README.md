@@ -5,8 +5,6 @@
 
 Run the main Flask module by running `python3 PizzaParlour.py`
 
-Added pylint to vscode
-
 Run unit tests with coverage by running `pytest --cov-report term --cov=. tests/unit_tests.py`
 
 ## Roadmap
@@ -67,3 +65,24 @@ The drawback of pair programming was that it felt slower than if we were to prog
 
 ## 3. Test
 > finalize unit tests and ensure code coverage and cleanliness
+
+We used PyCharm as the IDE to code this project. To Ensure code cleanliness, we used the default Code Style setting for Python and ran the "[Code Cleanup](https://www.jetbrains.com/help/pycharm/reformat-file-dialog.html)" checker on [all the files](https://www.jetbrains.com/help/pycharm/specify-code-cleanup-scope-dialog.html) in the project. From the documentation: 
+
+```
+Select this option to run the code cleanup inspections. PyCharm finds and automatically fixes potentially problematic code fragments.
+```
+
+We checked the default Code Style settings in Pycharm by navigating to Settings/Preferences -> Editor | Code Style | Python. There are rules set for: 
+- Tabs and Indents
+- Spaces
+- Wrapping and Braces
+- Blank Lines
+- Imports 
+
+We also checked to see which rules are inforced in Settings/Preferences -> Editor | Inspections | Python. These inspections check semantics, rather than style or syntax. An example of an inspection is the "Dictionary Contains Duplicate Keys". It's documentation contains the following: 
+
+```
+This inspection highlights using the same value as dictionary key twice.
+```
+We enabled all of these checks. 
+

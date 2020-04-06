@@ -28,12 +28,12 @@ Serialization: For each class we have defined, there is a toString method to ser
 > _Pair program features and document as we go_
 
 #### Pair Programming
+
 1. Creating Order class
     - **Driver**: Ryan 
     - **Navigator**: Shardul
     - We didn't know how to define static variables in Python, how to modify static variables in classes
     - How to have the static variables in the init functions.
-
     - We though that creating a class would be shorter, but there was a little bit of a learning curve as we remembered how to do things in Python. The Navigator, Shardul, helped by looking up references on his computer
     - We also made the collaborative decision to swtich from VSCode to Pycharm so we could use the built-in functionality of linting and other language specific features to help us create clean code. 
     - From here on, we are going to adjust our expectations of what we can get done in a hour of pair programming. The next hour we will spend on creating the MenuItem class and its subclasses of Drink and Pizza. 

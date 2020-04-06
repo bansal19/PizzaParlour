@@ -22,7 +22,7 @@ class Pizza(MenuItem):
 	# Pizza size
 	all_pizza_sizes = data["all_pizza_sizes"]
 	
-	def __init__(self, pizza_type, size, toppings=None):
+	def __init__(self, pizza_type, size=None, toppings=None):
 
 		self.price = 0
 
@@ -123,6 +123,6 @@ class Pizza(MenuItem):
 
 		return self.price
 
-	def __str__(self):
+	def to_dict(self):
 		"""ToString function of the Pizza Class"""
 		return {self.pizza_type: {"size": self.size, "toppings": self.get_toppings(), "price": self.get_price()}}

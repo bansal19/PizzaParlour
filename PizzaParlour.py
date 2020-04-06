@@ -15,7 +15,35 @@ menu = Menu(menu_path)
 # Store all the orders
 all_orders = []
 
+
+# Helper Functions:
+def helper_add_to_order(order, json_data):
+    # Get all the Drinks from the POST request and add them to the order
+
+    try:
+        if len(json_data["Drinks"]) > 0:
+            for drink in json_data["Drinks"]:
+                order_drink = Drink(drink)
+                order.add_order_item(order_drink)
+    except KeyError:
+        pass
+
+    try:
+        # Get all the Pizzas from the POST request and add them to the order
+        if len(json_data["Pizzas"]) > 0:
+            for pizza in json_data["Pizzas"]:
+                pizza_name = pizza
+                pizza_size = json_data["Pizzas"][pizza_name]["size"]
+                pizza_toppings = json_data["Pizzas"][pizza_name]["toppings"]
+                order_pizza = Pizza(pizza_name, pizza_size, pizza_toppings)
+                order.add_order_item(order_pizza)
+    except KeyError:
+        pass
+
+
 """ Menu APIs: """
+
+
 @app.route('/pizza')
 def welcome_pizza():
     return 'Welcome to Pizza Planet!'
@@ -41,22 +69,7 @@ def new_order():
     """
     if request.method == 'POST':
         new_customer_order = Order()
-        json_data = request.get_json()
-
-        # Get all the Drinks from the POST request and add them to the order
-        if len(json_data["Drinks"]) > 0:
-            for drink in json_data["Drinks"]:
-                order_drink = Drink(drink)
-                new_customer_order.add_order_item(order_drink)
-
-        # Get all the Pizzas from the POST request and add them to the order
-        if len(json_data["Pizzas"]) > 0:
-            for pizza in json_data["Pizzas"]:
-                pizza_name = pizza
-                pizza_size = json_data["Pizzas"][pizza_name]["size"]
-                pizza_toppings = json_data["Pizzas"][pizza_name]["toppings"]
-                order_pizza = Pizza(pizza_name, pizza_size, pizza_toppings)
-                new_customer_order.add_order_item(order_pizza)
+        helper_add_to_order(new_customer_order, request.get_json())
 
         all_orders.append(new_customer_order)
         return "Order was filled in successfully. Your orderID is: " + str(new_customer_order.order_number)
@@ -71,41 +84,107 @@ def get_order_info(order_id):
     if request.method == 'GET':
         for order in all_orders:
             if order.order_number == int(order_id):
-                return str(order)
+                return json.dumps(order.to_dict())
 
         return "Sorry, the order with the order number " + order_id + " was not found."
 
 
-@app.route("/order_distribution/<order_id>/<pick_or_deliver>", methods=['PATCH'])
-def set_order_distribution(order_id, pick_or_deliver):
+@app.route("/order_distribution/<order_id>/<pickup_or_deliver>", methods=['PATCH'])
+def set_order_distribution(order_id, pickup_or_deliver):
     """ Provide information for if the order is for either pickup or delivery
-    possible values for pick_or_deliver: "pickup", "in-house-delivery", 'uber-delivery', "foodora-delivery" """
+    possible values for pick_or_deliver: ["pickup", "in-house", 'uber', "foodora"] """
 
     if request.method == 'PATCH':
         for order in all_orders:
             if order.order_number == int(order_id):
-                order.set_order_distribution(pick_or_deliver)
-                return str(order)
+                if pickup_or_deliver == "pickup":
+                    order.set_order_distribution(pickup_or_deliver)
+                else:
+                    breakpoint()
+                    json_data = request.get_json()
+                    order.set_order_distribution(list(json_data.keys)[0], json_data[list(json_data.keys)[0]])
+                return json.dumps(order.to_dict())
 
         return "Sorry, the order with the order number " + order_id + " was not found."
 
 
-@app.route("/add_to_order/<orderID>/")
-def add_to_order(orderID):
+@app.route("/add_to_order/<order_id>", methods=['PATCH'])
+def add_to_order(order_id):
     """Given a particular orderID, add to this specific order"""
-    pass
+
+    if request.method == 'PATCH':
+        for order in all_orders:
+            if order.order_number == int(order_id):
+                json_data = request.get_json()
+                helper_add_to_order(order, json_data)
+                return json.dumps(order.to_dict())
+
+        return "Sorry, the order with the order number " + order_id + " was not found."
 
 
-@app.route("/remove_from_order/<orderID>/")
-def remove_from_order(orderID):
+@app.route("/remove_from_order/<order_id>", methods=['PATCH'])
+def remove_from_order(order_id):
     """ Given particular orderID, remove specific items from the order"""
-    pass
+
+    if request.method == 'PATCH':
+        for order in all_orders:
+            if order.order_number == int(order_id):
+                json_data = request.get_json()
+
+                try:
+                    if len(json_data["Drinks"]) > 0:
+                        for drink in json_data["Drinks"]:
+                            drink_to_remove = Drink(drink)
+                            order.remove_order_item(drink_to_remove)
+                except KeyError:
+                    pass
+
+                try:
+                    if len(json_data["Pizzas"]) > 0:
+                        for pizza in json_data["Pizzas"]:
+                            pizza_to_remove = Pizza(pizza)
+                            order.remove_order_item(pizza_to_remove)
+                except KeyError:
+                    pass
+
+                return json.dumps(order.to_dict())
+
+        return "Sorry, the order with the order number " + order_id + " was not found."
 
 
-@app.route("/cancel_order/<orderID>")
-def cancel_order(orderID):
+@app.route("/cancel_order/<order_id>", methods=['DELETE'])
+def cancel_order(order_id):
     """Cancel the order with this orderID"""
-    pass
+
+    if request.method == 'DELETE':
+        for order in all_orders:
+            if order.order_number == int(order_id):
+                order.cancel_order()
+                all_orders.remove(order)
+
+
+@app.route("/deliver_order/<order_id>/<deliver_method>", methods=['PATCH'])
+def deliver_order(order_id, deliver_method):
+
+    if request.method == 'PATCH':
+        for order in all_orders:
+            if order.order_number == int(order_id):
+                if deliver_method in ["pickup", "in-house", 'uber', "foodora"]:
+                    if deliver_method == "pickup":
+                        order.order_ready_for_pickup()
+                        return "Order " + order_id + " ready for pickup"
+
+                    elif deliver_method == "in-house":
+                        order.order_out_for_delivery()
+                        return "Order " + order_id + " is out for our in-house delivery to " + order.order_address
+
+                    elif deliver_method == "uber":
+                        order.order_out_for_delivery()
+                        return json.dumps(order.to_dict())
+
+                    elif deliver_method == "foodora":
+                        order.order_out_for_delivery()
+                        return json.dumps(order.to_dict())
 
 
 if __name__ == "__main__":

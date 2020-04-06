@@ -45,6 +45,6 @@ class Drink(MenuItem):
 		"""
 		return self.all_possible_drinks[self.get_drink()]
 
-	def __str__(self):
+	def to_dict(self):
 		""" ToString function for a drink"""
 		return {self.drink: self.get_price()}

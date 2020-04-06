@@ -84,5 +84,5 @@ We also checked to see which rules are inforced in Settings/Preferences -> Edito
 ```
 This inspection highlights using the same value as dictionary key twice.
 ```
-We enabled all of these checks and ensured that our code passed all of them. 
+We enabled these checks and ensured that our code passed all of them. 
 

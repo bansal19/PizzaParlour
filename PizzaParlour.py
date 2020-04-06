@@ -184,7 +184,14 @@ def deliver_order(order_id):
                     order.order_out_for_delivery()
                     return json.dumps(order.to_dict())
 
-@app.route("/")
+
+@app.route("/add_pizza/<new_pizza_type>/<price>", methods=['POST'])
+def add_pizza_type(new_pizza_type, price):
+
+    if request.method == 'POST':
+        menu.create_pizza_type(new_pizza_type, float(price))
+        return new_pizza_type + ": " + str(menu.get_item_price(new_pizza_type))
+
 
 if __name__ == "__main__":
     app.run()

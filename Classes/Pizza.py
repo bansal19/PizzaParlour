@@ -58,7 +58,7 @@ class Pizza(MenuItem):
 		:rtype: string
 		"""
 		return self.pizza_type
-	
+
 	def set_type(self, new_type):
 		"""
 		Upon modifying the order, a new pizza type can be set
@@ -70,7 +70,7 @@ class Pizza(MenuItem):
 		"""
 		if new_type in self.all_pizza_types:
 			self.pizza_type = new_type
-	
+
 	def get_toppings(self):
 		"""
 		Get all the pizza toppings
@@ -79,7 +79,7 @@ class Pizza(MenuItem):
 		:rtype: list
 		"""
 		return self.pizza_toppings
-	
+
 	def add_toppings(self, append_toppings):
 		"""
 		Add toppings to the pizza
@@ -93,7 +93,7 @@ class Pizza(MenuItem):
 			for item in append_toppings:
 				if item not in self.pizza_toppings:
 					self.pizza_toppings.append(item)
-	
+
 	def remove_toppings(self, remove_toppings):
 		"""
 		Remove toppings that a customer has asked to be put on the pizza
@@ -108,7 +108,7 @@ class Pizza(MenuItem):
 				self.pizza_toppings.remove(item)
 			except ValueError:
 				print("Oops, that was already not on the pizza!")
-	
+
 	def get_price(self):
 		"""
 		Return the price of the pizza

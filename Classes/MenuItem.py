@@ -5,7 +5,7 @@ class MenuItem(Menu):
 	"""
 	Menu Item
 	"""
-	
+
 	def __init__(self, name, price):
 		self.name = name
 		self.price = price
@@ -50,4 +50,3 @@ class MenuItem(Menu):
 		:rtype: void
 		"""
 		self.name = new_name
-

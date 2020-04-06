@@ -59,6 +59,7 @@ class Menu:
 	
 	def get_item_price(self, name):
 		"""
+
 		Given a name, return the price of that item
 		:param name: name of a MenuItem
 		:type name: string
@@ -79,7 +80,7 @@ class Menu:
 	"""
 	The below functions are for modifying the Menu json file.
 	"""
-	
+
 	def create_pizza_type(self, new_type, price):
 		"""
 		Given a new_type and a price, create a new Pizza type.
@@ -167,6 +168,7 @@ class Menu:
 	
 	def add_drink_to_menu(self, drink_name, drink_price):
 		"""
+
 		Add a Drink to our JSON file
 
 		:param drink_name: New drink to add
@@ -189,6 +191,7 @@ class Menu:
 	
 	def remove_drink_from_menu(self, remove_drink):
 		"""
+
 		Given the drink (str), remove this from the Pizza Parlour menu (JSON file)
 
 		:param drink: drink to be removed

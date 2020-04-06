@@ -19,6 +19,7 @@ class Order:
 	@staticmethod
 	def increase_total_orders(cls):
 		"""
+
 		Increases the number of total orders that have been created
 
 		:param cls: Order
@@ -69,6 +70,7 @@ class Order:
 
 	def add_order_item(self, menu_item):
 		"""
+
 		Adds an item to this order
 
 		:param menu_item: Item to add to this order

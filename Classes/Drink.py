@@ -24,7 +24,7 @@ class Drink(MenuItem):
 		:rtype: string
 		"""
 		return self.drink
-	
+
 	def set_drink(self, new_drink):
 		"""
 		Set a new drink
@@ -36,7 +36,7 @@ class Drink(MenuItem):
 		"""
 		if new_drink in self.all_possible_drinks:
 			self.drink = new_drink
-	
+
 	def get_price(self):
 		"""
 		Get the price of the current drink

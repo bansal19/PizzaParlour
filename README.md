@@ -5,8 +5,6 @@
 
 Run the main Flask module by running `python3 PizzaParlour.py`
 
-Added pylint to vscode
-
 Run unit tests with coverage by running `pytest --cov-report term --cov=. tests/unit_tests.py`
 
 ## Roadmap
@@ -48,18 +46,49 @@ Reference: [Uber Menu Integration API](https://developer.uber.com/docs/eats/guid
     - Should the pizza type be an ENUM? Unfortunately we couldn't have that because the Pizza Parlour should be able to add pizza types. The same can be said about the toppings, so we created a dictionary and list for each of those respectively. The dictionary's key is the pizza type and the value is the price of that particular pizza type. 
     - We externalised our data so that it can be changed globally. All the information is stored in Menu.json now regarding the goods provided by Pizza Parlour.
     - We took advantage of inheritance and the child-parent relationship while creating our classes in this session of pair-programming!
-
-
-**TODO: implement pizza constructor with a builder class**
     
-3. Switching to Parallel Programming
+3. Switched to Parallel Programming
     - **Ryan**: OrderDistribution interface and foodora, ubereats, and inhouse classes
     - **Shardul**: Testing the classes he has written for MenuItems
+    
+4. Switched to Back to Pair Programming
+    - **Driver**: Shardul
+    - **Navigator**: Ryan
+    
+    
+**Pair Programming Reflection** 
+
+We found pair programming to be very productive, especially since the instructions were intentionally vague for the assignment. When pair programming, we could easily discuss our design choices and make changes. This was really important because we could not anticipate every single piece of code that would be needed in the final design. When we encountered a problem that we did not anticipate in the design or tackled errors that required debugging, it was great having two heads to put together to solve the issue. 
+
+The drawback of pair programming was that it felt slower than if we were to program on our own. The features were better designed and implemented, but it was a different pace than we were used to. Instead of "hacking" the entire project together, this was a much more structured process, but took longer than we anticipated. 
+
 
 ## 3. Test
 > finalize unit tests and ensure code coverage and cleanliness
 
-## Pair Programming
-1. Creating Classes for each file
+**Code Coverage**
 
-2. 
+
+**Code Cleanliness**
+
+We used PyCharm as the IDE to code this project. To Ensure code cleanliness, we used the default Code Style setting for Python and ran the "[Code Cleanup](https://www.jetbrains.com/help/pycharm/reformat-file-dialog.html)" checker on [all the files](https://www.jetbrains.com/help/pycharm/specify-code-cleanup-scope-dialog.html) in the project. From the documentation: 
+
+```
+Select this option to run the code cleanup inspections. PyCharm finds and automatically fixes potentially problematic code fragments.
+```
+
+We checked the default Code Style settings in Pycharm by navigating to Settings/Preferences -> Editor | Code Style | Python. There are rules set for: 
+- Tabs and Indents
+- Spaces
+- Wrapping and Braces
+- Blank Lines
+- Imports 
+
+We also checked to see which rules are inforced in Settings/Preferences -> Editor | Inspections | Python. These inspections check semantics, rather than style or syntax. An example of an inspection is the "Dictionary Contains Duplicate Keys". It's documentation contains the following: 
+
+```
+This inspection highlights using the same value as dictionary key twice.
+```
+We enabled these checks and ensured that our code passed all of them. We also added [Pylint to Pycharm](https://plugins.jetbrains.com/plugin/11084-pylint) and [ran those checks](https://www.jetbrains.com/help/pycharm/configuring-third-party-tools.html) as well. To fix a majority of the issues automatically, we used the [yapf](https://github.com/google/yapf) program to modify the files in place. After installing the [yapf plugin](https://plugins.jetbrains.com/plugin/10960-yapf) in PyCharm, we ran 
+`yapf -i -vv -recursive classes tests PizzaParlour.py`. 
+

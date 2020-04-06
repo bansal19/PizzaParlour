@@ -100,9 +100,8 @@ def set_order_distribution(order_id, pickup_or_deliver):
                 if pickup_or_deliver == "pickup":
                     order.set_order_distribution(pickup_or_deliver)
                 else:
-                    breakpoint()
                     json_data = request.get_json()
-                    order.set_order_distribution(list(json_data.keys)[0], json_data[list(json_data.keys)[0]])
+                    order.set_order_distribution(list(json_data.keys())[0], json_data[list(json_data.keys())[0]])
                 return json.dumps(order.to_dict())
 
         return "Sorry, the order with the order number " + order_id + " was not found."
@@ -163,28 +162,27 @@ def cancel_order(order_id):
                 all_orders.remove(order)
 
 
-@app.route("/deliver_order/<order_id>/<deliver_method>", methods=['PATCH'])
-def deliver_order(order_id, deliver_method):
+@app.route("/deliver_order/<order_id>", methods=['PATCH'])
+def deliver_order(order_id):
 
     if request.method == 'PATCH':
         for order in all_orders:
             if order.order_number == int(order_id):
-                if deliver_method in ["pickup", "in-house", 'uber', "foodora"]:
-                    if deliver_method == "pickup":
-                        order.order_ready_for_pickup()
-                        return "Order " + order_id + " ready for pickup"
+                if order.distribution == "pickup":
+                    order.order_ready_for_pickup()
+                    return "Order " + order_id + " ready for pickup"
 
-                    elif deliver_method == "in-house":
-                        order.order_out_for_delivery()
-                        return "Order " + order_id + " is out for our in-house delivery to " + order.order_address
+                elif order.distribution == "in-house":
+                    order.order_out_for_delivery()
+                    return "Order " + order_id + " is out for our in-house delivery to " + order.order_address
 
-                    elif deliver_method == "uber":
-                        order.order_out_for_delivery()
-                        return json.dumps(order.to_dict())
+                elif order.distribution == "uber":
+                    order.order_out_for_delivery()
+                    return json.dumps(order.to_dict())
 
-                    elif deliver_method == "foodora":
-                        order.order_out_for_delivery()
-                        return json.dumps(order.to_dict())
+                elif order.distribution == "foodora":
+                    order.order_out_for_delivery()
+                    return json.dumps(order.to_dict())
 
 
 if __name__ == "__main__":

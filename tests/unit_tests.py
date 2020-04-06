@@ -67,13 +67,19 @@ def test_set_order_distribution():
 	assert response.data == b'{"orderID": 0, "order status": "OrderStatus.STARTED", "order items": [{"Coke": 1.59}, {"Margherita": {"size": "large", "toppings": ["onions", "tomatoes"], "price": 9.7}}], "order distribution": "uber", "order price": 11.29, "order address": "4 David Copperfield St"}'
 
 
+def test_cancel_order():
+
+	response = app.test_client().delete('/cancel_order/0')
+	assert response.status_code == 200
+	assert response.data == b'Order: 0 cancelled successfully'
+
+
 def test_add_pizza_type():
 
 	response = app.test_client().post('/add_pizza/Shardul/6.99')
 
 	assert response.status_code == 200
 	assert response.data == b'Shardul: 6.99'
-
 
 
 if __name__ == "__main__":

@@ -160,6 +160,7 @@ def cancel_order(order_id):
             if order.order_number == int(order_id):
                 order.cancel_order()
                 all_orders.remove(order)
+                return "Order: " + order_id + " cancelled successfully"
 
 
 @app.route("/deliver_order/<order_id>", methods=['PATCH'])
@@ -183,6 +184,8 @@ def deliver_order(order_id):
                 elif order.distribution == "foodora":
                     order.order_out_for_delivery()
                     return json.dumps(order.to_dict())
+
+                return "Order was not delivered"
 
 
 @app.route("/add_pizza/<new_pizza_type>/<price>", methods=['POST'])
